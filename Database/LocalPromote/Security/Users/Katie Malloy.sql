@@ -1,0 +1,2 @@
+CREATE USER [Katie Malloy] WITHOUT LOGIN
+GO

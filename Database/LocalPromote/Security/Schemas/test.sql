@@ -1,0 +1,3 @@
+CREATE SCHEMA [test]
+AUTHORIZATION [test]
+GO

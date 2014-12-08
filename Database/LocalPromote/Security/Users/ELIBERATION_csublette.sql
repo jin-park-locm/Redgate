@@ -1,0 +1,5 @@
+IF NOT EXISTS (SELECT * FROM master.dbo.syslogins WHERE loginname = N'ELIBERATION\csublette')
+CREATE LOGIN [ELIBERATION\csublette] FROM WINDOWS
+GO
+CREATE USER [ELIBERATION\csublette] FOR LOGIN [ELIBERATION\csublette]
+GO

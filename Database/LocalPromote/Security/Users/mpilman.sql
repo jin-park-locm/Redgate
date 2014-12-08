@@ -1,0 +1,5 @@
+IF NOT EXISTS (SELECT * FROM master.dbo.syslogins WHERE loginname = N'ELIBERATION\mpijlman')
+CREATE LOGIN [ELIBERATION\mpijlman] FROM WINDOWS
+GO
+CREATE USER [mpilman] FOR LOGIN [ELIBERATION\mpijlman]
+GO

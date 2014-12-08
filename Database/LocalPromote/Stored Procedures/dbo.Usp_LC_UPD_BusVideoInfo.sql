@@ -1,0 +1,15 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+CREATE    PROCEDURE [dbo].[Usp_LC_UPD_BusVideoInfo]     @lBusVideoInfoId				int    ,@lAdvertiserID					int    ,@lBusVideoTypeId				int    ,@lBusVideoLocationId			int    ,@szVideoTitle					varchar(100)    ,@szVideoDesc					varchar(255)	= NULL    ,@dVideoBitRateBitsPerSec		decimal			= NULL    ,@szVideoFileName				varchar(255)	= NULL    ,@lVideoFramesPerSec			int				= NULL    ,@dVideoFileSizeBytes			decimal			= NULL    ,@lResWidth						int				= NULL    ,@lResHeight					int				= NULL    ,@lDurationInSeconds			int				= NULL    ,@dtVideoCreated				datetime		= NULL    ,@dtVideoLastEdited				datetime		= NULL    ,@dtActiveStart					datetime		= NULL    ,@dtActiveEnd					datetime		= NULL    ,@dtInsert						datetime		= NULL    ,@szInsertedBy					varchar(100)	= NULL    ,@dtUpdate						datetime		= NULL    ,@szUpdatedBy					varchar(100)	= NULL    AS SET NOCOUNT ONBEGIN    UPDATE [dbo].[tblLP_BusVideoInfo]    SET 		 [lAdvertiserID]			= ISNULL(@lAdvertiserID, [lAdvertiserID])        ,[lBusVideoTypeId]			= ISNULL(@lBusVideoTypeId, [lBusVideoTypeId])        ,[lBusVideoLocationId]		= ISNULL(@lBusVideoLocationId, [lBusVideoLocationId])        ,[szVideoTitle]				= ISNULL(@szVideoTitle, [szVideoTitle])        ,[szVideoDesc]				= ISNULL(@szVideoDesc, [szVideoDesc])        ,[dVideoBitRateBitsPerSec]	= ISNULL(@dVideoBitRateBitsPerSec, [dVideoBitRateBitsPerSec])        ,[szVideoFileName]			= ISNULL(@szVideoFileName, [szVideoFileName])        ,[lVideoFramesPerSec]		= ISNULL(@lVideoFramesPerSec, [lVideoFramesPerSec])        ,[dVideoFileSizeBytes]		= ISNULL(@dVideoFileSizeBytes, [dVideoFileSizeBytes])        ,[lResWidth]				= ISNULL(@lResWidth, [lResWidth])        ,[lResHeight]				= ISNULL(@lResHeight, [lResHeight])        ,[lDurationInSeconds]		= ISNULL(@lDurationInSeconds, [lDurationInSeconds])        ,[dtVideoCreated]			= ISNULL(@dtVideoCreated, [dtVideoCreated])        ,[dtVideoLastEdited]		= ISNULL(@dtVideoLastEdited, [dtVideoLastEdited])        ,[dtActiveStart]			= ISNULL(@dtActiveStart, [dtActiveStart])        ,[dtActiveEnd]				= ISNULL(@dtActiveEnd, [dtActiveEnd])        ,[dtInsert]					= ISNULL(@dtInsert, [dtInsert])        ,[szInsertedBy]				= ISNULL(@szInsertedBy, [szInsertedBy])        ,[dtUpdate]					= ISNULL(@dtUpdate, Getdate())
+		,[szUpdatedBy]				= ISNULL(@szUpdatedBy, [szUpdatedBy])        WHERE [lBusVideoInfoId] = @lBusVideoInfoIdIF @@ERROR = 0SELECT @lBusVideoInfoId AS lBusVideoInfoIdEND
+GO
+GRANT EXECUTE ON  [dbo].[Usp_LC_UPD_BusVideoInfo] TO [iisLpAdminFull]
+GRANT EXECUTE ON  [dbo].[Usp_LC_UPD_BusVideoInfo] TO [iisLpAdminSsUiFull]
+GRANT EXECUTE ON  [dbo].[Usp_LC_UPD_BusVideoInfo] TO [iisReviewEngine]
+GRANT EXECUTE ON  [dbo].[Usp_LC_UPD_BusVideoInfo] TO [iisReviewEngineFull]
+GRANT EXECUTE ON  [dbo].[Usp_LC_UPD_BusVideoInfo] TO [lcssui]
+GRANT EXECUTE ON  [dbo].[Usp_LC_UPD_BusVideoInfo] TO [LocalConnect]
+GRANT EXECUTE ON  [dbo].[Usp_LC_UPD_BusVideoInfo] TO [web_user]
+GO
